@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Home from '../views/pages/Home.vue'
+import WalmartDashboard from '../views/pages/Walmart/Dashboard.vue'
+
 
 const routes = [
   {
@@ -14,9 +16,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/wm-dashboard',
+    name: 'WalmartDashboard',
+    component: WalmartDashboard
   }
 ]
 
