@@ -19,5 +19,8 @@ export default {
     Sidebar,
     CardDashboard
   },
+  methods:{
+    
+  }
 }
 </script>

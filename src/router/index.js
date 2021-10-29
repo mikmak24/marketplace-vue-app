@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Home from '../views/pages/Home.vue'
 import WalmartDashboard from '../views/pages/Walmart/Dashboard.vue'
+import WalmartUploadItems from '../views/pages/Walmart/UploadItems.vue'
+
 
 
 const routes = [
@@ -19,6 +21,11 @@ const routes = [
     path: '/wm-dashboard',
     name: 'WalmartDashboard',
     component: WalmartDashboard
+  },
+  {
+    path: '/wm-uploaditems',
+    name: 'WalmartUploadItems',
+    component: WalmartUploadItems
   }
 ]
 
