@@ -7,7 +7,7 @@
               <p class="text-white font-medium text-center text-lg font-bold">G.O Green Marketplace</p>
                 <div class="">
                   <label class="block text-sm text-white" for="email">E-mail</label>
-                  <input v-model="userInput"  class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white" type="email" id="email" aria-label="email" required>
+                  <input v-model="email"  class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white" type="email" id="email" aria-label="email" required>
                 </div>
                 <div class="mt-2">
                   <label class="block  text-sm text-white">Password</label>
@@ -28,27 +28,19 @@
 </template>
 
 <script>
+import { mapFields } from 'vuex-map-fields';
+
 export default {
   name: 'LoginForm',
-  data() {
-    return {
-        email: '',
-        password: ''
-    }
-  },
   components: {
   },
   methods: {
   },
   computed: {
-    userInput: {
-      get(){
-        return this.$store.state.auth.email
-      },
-      set(newValues){
-        this.$store.dispatch('setEmail', newValues)
-      }
-    }
+     ...mapFields([
+      'email',
+      'password',
+      ]),
   }
 }
 </script>

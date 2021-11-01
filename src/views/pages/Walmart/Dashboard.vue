@@ -21,8 +21,6 @@ import Card from '@/components/Walmart/Card'
 import Table from '@/components/Walmart/Table'
 import axios from 'axios';
 
-
-
 export default {
   name: 'Dashboard',
   data(){

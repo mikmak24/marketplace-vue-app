@@ -1,5 +1,6 @@
 import axios from 'axios';
 import router from '../../router';
+import { getField, updateField } from 'vuex-map-fields';
 
 const state = {
     email: '',
@@ -9,6 +10,7 @@ const state = {
 }
 const mutations = {
   //Commit
+  updateField,
   setEmail(state, email){
     // state.colorCode = newColor
     state.email = email
@@ -20,13 +22,17 @@ const mutations = {
   }
 }
 
+const getters = {
+  getField,
+}
+
 const actions = {
   //dispatch
   async login({ commit }){
     console.log('Processsing Login Here')
     const credentials = { 
       email: state.email, 
-      password: 'admin'
+      password: state.password
     };
     
     const res = axios.post("http://127.0.0.1:8000/api/login", credentials)
@@ -41,4 +47,4 @@ const actions = {
   }
 }
 
-export default {state, mutations, actions}
+export default {state, mutations, getters, actions}
