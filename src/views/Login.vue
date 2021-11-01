@@ -7,10 +7,11 @@
 <script>
 
 import LoginForm from '@/components/LoginForm'
+
 export default {
   name: 'Login',
   components: {
-    LoginForm
-  },
+    LoginForm,
+  }
 }
 </script>

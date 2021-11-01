@@ -17,7 +17,6 @@ import UploadForm from '@/components/Walmart/UploadForm'
 import axios from 'axios'
 
 
-
 export default {
   name: 'UploadItems',
   data(){

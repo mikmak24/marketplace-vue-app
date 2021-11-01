@@ -7,7 +7,7 @@
               <p class="text-white font-medium text-center text-lg font-bold">G.O Green Marketplace</p>
                 <div class="">
                   <label class="block text-sm text-white" for="email">E-mail</label>
-                  <input v-model="email"  class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white" type="email" id="email" aria-label="email" required>
+                  <input v-model="userInput"  class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white" type="email" id="email" aria-label="email" required>
                 </div>
                 <div class="mt-2">
                   <label class="block  text-sm text-white">Password</label>
@@ -15,7 +15,7 @@
                     type="password" id="password" arial-label="password" required>
                 </div>
                 <div class="mt-4 items-center flex justify-between">
-                  <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded" @click="LoginAccount()"
+                  <button type="button" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded" @click="$store.dispatch('login')"
                     >Login Account</button>
                   <a class="inline-block right-0 align-baseline font-bold text-sm text-500 text-white hover:text-red-400"
                     href="#">Forgot Password ?</a>
@@ -39,10 +39,15 @@ export default {
   components: {
   },
   methods: {
-    LoginAccount(){
-        console.log(this.email)
-        console.log(this.password)
-        this.$router.push('Home') 
+  },
+  computed: {
+    userInput: {
+      get(){
+        return this.$store.state.auth.email
+      },
+      set(newValues){
+        this.$store.dispatch('setEmail', newValues)
+      }
     }
   }
 }
