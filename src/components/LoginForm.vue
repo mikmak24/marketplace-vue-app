@@ -3,7 +3,7 @@
   <div class="container mx-auto h-full flex flex-1 justify-center items-center">
       <div class="w-full max-w-lg">
         <div class="leading-loose">
-          <form class="max-w-sm m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl">
+          <form class="w-700 p-10 bg-gray-700 rounded shadow-xl">
               <p class="text-white font-medium text-center text-lg font-bold">G.O Green Marketplace</p>
                 <div class="">
                   <label class="block text-sm text-white" for="email">E-mail</label>
@@ -47,7 +47,6 @@ export default {
 
 <style scoped>
   .login{ 
-  background-color: green;
   background-repeat: no-repeat;
   background-size: cover;
 }

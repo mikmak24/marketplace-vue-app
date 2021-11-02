@@ -1,6 +1,7 @@
 import axios from 'axios';
 import router from '../../router';
 import { getField, updateField } from 'vuex-map-fields';
+import { isSet } from '@vue/shared';
 
 const state = {
     email: '',
@@ -39,8 +40,11 @@ const actions = {
       .then(
         function (response){
         commit('userAuth', response.data.data.token, response.data.data.name)
-    });  
-    router.push('/home')
+      }).catch((error) => {
+        console.log(error); //Logs a string: Error: Request failed with status code 404
+      });  
+    
+    // router.push('/home')
   },
   setEmail({commit}, email){
     commit('setEmail', email)
