@@ -1,8 +1,12 @@
 <template>
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
     <div class="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r">
-        <div class="flex items-center justify-center h-20 border-b bg-green-700 text-white">
-        <div>G.O Green Marketplace</div>
+        <div class="flex items-center justify-center h-20 border-b bg-green-600 text-white">
+        <div class="h-7 grid grid-rows-2 grid-flow-col gap-8">
+            <div>        
+                <img src="../assets/gogreenlogo.png" />
+            </div>
+        </div>
         </div>
         <div class="overflow-y-auto overflow-x-hidden flex-grow">
         <ul class="flex flex-col py-4 space-y-1">
@@ -75,9 +79,6 @@
                 </div>
                
             </div>
-
-
-
             </li>
             <li class="px-5">
             <div class="flex flex-row items-center h-8">
@@ -113,20 +114,26 @@
             </li>
         </ul>
         </div>
+          <footer class="h-10 bg-green-700 text-white text-center"><div>Logged in: {{$store.state.auth.userName}} </div></footer>
     </div>
+    
     </div>
 </template>
 <script>
 export default {
     data(){
         return{
-            showWMmenu: false
+            showWMmenu: false,
+            userName: ''
         }
     },
     methods: {
         WMMenu(){
             this.showWMmenu = !this.showWMmenu
         }
+    },
+    created(){
+        this.userName = localStorage.getItem('userName')
     }
 }
 </script>>

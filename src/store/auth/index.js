@@ -8,24 +8,30 @@ const state = {
     password: '',
     userToken: '',
     userName: '',
-    result: ''
+    hasError: false
 }
 const mutations = {
   //Commit
   updateField,
   setEmail(state, email){
-    // state.colorCode = newColor
     state.email = email
     console.log(email)
   },
-  userAuth(state, userToken, userName){
+  setuserToken(state, userToken){
     state.userToken = userToken
+  },
+  setuserName(state, userName){
     state.userName = userName
+    localStorage.setItem('userName', userName)
+  },
+  hasError(state, value){
+    state.hasError = value
   }
 }
 
 const getters = {
   getField,
+  
 }
 
 const actions = {
@@ -40,12 +46,13 @@ const actions = {
     const res = axios.post("http://127.0.0.1:8000/api/login", credentials)
       .then(
         function (response){
-        commit('userAuth', response.data.data.token, response.data.data.name)
-        router.push('/home')
+          commit('setuserToken', response.data.data.token)
+          commit('setuserName', response.data.data.name)
+          router.push('/home')
       }).catch((error) => {
         console.log(error); //Logs a string: Error: Request failed with status code 404
         if(error){
-          console.log('Incorrect Username or Password')
+          commit('hasError', true)
         }
       });  
     
