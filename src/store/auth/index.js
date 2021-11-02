@@ -7,7 +7,8 @@ const state = {
     email: '',
     password: '',
     userToken: '',
-    userName: ''
+    userName: '',
+    result: ''
 }
 const mutations = {
   //Commit
@@ -40,11 +41,14 @@ const actions = {
       .then(
         function (response){
         commit('userAuth', response.data.data.token, response.data.data.name)
+        router.push('/home')
       }).catch((error) => {
         console.log(error); //Logs a string: Error: Request failed with status code 404
+        if(error){
+          console.log('Incorrect Username or Password')
+        }
       });  
     
-    // router.push('/home')
   },
   setEmail({commit}, email){
     commit('setEmail', email)
