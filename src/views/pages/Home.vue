@@ -6,7 +6,6 @@
     <section class="w-full">
         <CardDashboard />
     </section>
-        <!-- <h1>{{$store.state.auth.userToken}}</h1> -->
 
 </main>
 </template>

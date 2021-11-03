@@ -10,426 +10,105 @@
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >
-                Image
+                Order Date
               </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >
-                Item Details
+                Purchase Order ID
               </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >
-                Status
+                Order ID
               </th>
               <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
               >
-                Price
+                Website
               </th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Name
+              </th>
+               <th
+                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Grand Total Cost
+              </th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Eclipse ID
+              </th>
+              <th
+                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Has Shipment
+              </th>
+              
               <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
             </tr>
           </thead>
 
-          <tbody class="bg-white">
-            <tr>
+          <tbody class="bg-white" v-for="order in recentOrders" :key="order._id">
+            <tr class="text-sm">
+              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-15 text-red-600">
+                    {{order.created_at}}
+                  </div>
+                </div>
+              </td>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-10">
-                    <img
-                      class="h-10 w-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900">
-                      John Doe
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      john@example.com
-                    </div>
+                    {{order.purchase_order_id}}
                   </div>
                 </div>
               </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900">
-                  Software Engineer
-                </div>
-                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <span
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                  >Active</span
-                >
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-              >
-                Owner
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-              >
-                <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                  >Edit</a
-                >
-              </td>
-            </tr>
-            <tr>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img
-                      class="h-10 w-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900">
-                      John Doe
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      john@example.com
-                    </div>
+                  <div class="flex-shrink-0 h-10 w-15">
+                    {{order.order_id}}
                   </div>
                 </div>
               </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900">
-                  Software Engineer
+               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-15">
+                    {{order.website}}
+                  </div>
                 </div>
-                <div class="text-sm leading-5 text-gray-500">Web dev</div>
               </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <span
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                  >Active</span
-                >
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-5 w-15">
+                    {{order.name}}
+                  </div>
+                </div>
               </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-              >
-                Owner
+               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10">
+                    {{order.grand_total_cost}}
+                  </div>
+                </div>
               </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-              >
-                <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                  >Edit</a
-                >
-              </td>
-            </tr>
-            <tr>
               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img
-                      class="h-10 w-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900">
-                      John Doe
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      john@example.com
-                    </div>
+                  <div class="flex-shrink-0 h-10 w-15">
+                    {{order.eclipse_id}}
                   </div>
                 </div>
               </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900">
-                  Software Engineer
-                </div>
-                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <span
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                  >Active</span
-                >
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-              >
-                Owner
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-              >
-                <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                  >Edit</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+               <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img
-                      class="h-10 w-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900">
-                      John Doe
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      john@example.com
-                    </div>
+                  <div class="flex-shrink-0 h-10 w-15">
+                    {{order.has_shipment}}
                   </div>
                 </div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900">
-                  Software Engineer
-                </div>
-                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <span
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                  >Active</span
-                >
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-              >
-                Owner
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-              >
-                <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                  >Edit</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img
-                      class="h-10 w-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900">
-                      John Doe
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      john@example.com
-                    </div>
-                  </div>
-                </div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900">
-                  Software Engineer
-                </div>
-                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <span
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                  >Active</span
-                >
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-              >
-                Owner
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-              >
-                <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                  >Edit</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img
-                      class="h-10 w-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900">
-                      John Doe
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      john@example.com
-                    </div>
-                  </div>
-                </div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900">
-                  Software Engineer
-                </div>
-                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <span
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                  >Active</span
-                >
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-              >
-                Owner
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-              >
-                <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                  >Edit</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img
-                      class="h-10 w-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900">
-                      John Doe
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      john@example.com
-                    </div>
-                  </div>
-                </div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900">
-                  Software Engineer
-                </div>
-                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <span
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                  >Active</span
-                >
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-              >
-                Owner
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-              >
-                <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                  >Edit</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img
-                      class="h-10 w-10 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt=""
-                    />
-                  </div>
-
-                  <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900">
-                      John Doe
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      john@example.com
-                    </div>
-                  </div>
-                </div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900">
-                  Software Engineer
-                </div>
-                <div class="text-sm leading-5 text-gray-500">Web dev</div>
-              </td>
-
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <span
-                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                  >Active</span
-                >
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-              >
-                Owner
-              </td>
-
-              <td
-                class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-              >
-                <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                  >Edit</a
-                >
               </td>
             </tr>
           </tbody>
@@ -438,3 +117,8 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: ['recentOrders']
+}
+</script>

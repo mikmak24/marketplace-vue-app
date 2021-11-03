@@ -1,17 +1,16 @@
 import axios from 'axios';
 import router from '../../router';
 import { getField, updateField } from 'vuex-map-fields';
-import { isSet } from '@vue/shared';
 
 const state = {
     email: '',
     password: '',
     userToken: '',
     userName: '',
-    hasError: false
+    hasError: false,
+    authorization: ''
 }
 const mutations = {
-  //Commit
   updateField,
   setEmail(state, email){
     state.email = email
@@ -19,10 +18,11 @@ const mutations = {
   },
   setuserToken(state, userToken){
     state.userToken = userToken
+    localStorage.setItem("userToken", userToken)
   },
   setuserName(state, userName){
     state.userName = userName
-    localStorage.setItem('userName', userName)
+    localStorage.setItem("userName", userName)
   },
   hasError(state, value){
     state.hasError = value
@@ -59,6 +59,12 @@ const actions = {
   },
   setEmail({commit}, email){
     commit('setEmail', email)
+  },
+  logout({commit }){
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('userName');
+    commit('hasError', false)
+    router.push('/')
   }
 }
 
