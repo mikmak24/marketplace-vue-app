@@ -1,6 +1,6 @@
 <template>
-    <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
-    <div class="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r">
+    <div class="flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
+    <div class="fixed flex flex-col top-0 left-0 w-60 bg-white h-full border-r">
         <div class="flex items-center justify-center h-20 border-b bg-green-800 text-white">
         <div class="h-7 grid grid-rows-2 grid-flow-col gap-1">
             <div class="">      
@@ -115,9 +115,8 @@
             </li>
         </ul>
         </div>
-          <footer class="h-10 bg-green-700 text-white text-center"><div>Logged in: {{userName}} </div></footer>
+          <footer class="h-10 bg-green-700 text-white text-center"><div class="mt-2">Logged in: {{userName}} </div></footer>
     </div>
-    
     </div>
 </template>
 <script>

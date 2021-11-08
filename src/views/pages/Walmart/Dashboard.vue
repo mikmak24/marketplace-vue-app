@@ -1,16 +1,14 @@
 <template>
 <main class="flex w-full h-screen">
-    <aside class="w-80 h-screen bg-gray shadow-md w-fulll hidden sm:block">
+    <aside class="w-60 ml-10 h-screen bg-gray shadow-md w-fulll hidden sm:block">
         <Sidebar />
     </aside>
     <section class="w-full">
         <Navbar />
         <Card />
         <Table 
-          :recentOrders = recentOrders
+          :recentOrders = "recentOrders"
         />
-        <!-- <button @click="getUser()">{{recentOrders}}</button> -->
-
     </section>
 </main>
 </template>
@@ -19,7 +17,7 @@
 import Sidebar from '@/components/Sidebar'
 import Navbar from '@/components/Walmart/Navbar'
 import Card from '@/components/Walmart/Card'
-import Table from '@/components/Walmart/Table'
+import Table from '@/components/Walmart/TableDashboard'
 import axios from 'axios';
 
 export default {
@@ -27,7 +25,7 @@ export default {
   data(){
     return{
       pageName: 'Walmart Dashboard',
-      recentOrders: [],
+      recentOrders: []
     }
   },
   components: {
@@ -47,7 +45,6 @@ export default {
       .then(
         function (response){
         self.recentOrders = response.data
-        console.log(response.data[0].purchase_order_id)
       });   
   }
 }
