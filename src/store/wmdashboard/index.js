@@ -4,20 +4,22 @@ import { getField, updateField } from 'vuex-map-fields';
 
 const state = {
     recentOrders: [],
-    ordersFullfilled: []
+    ordersFullfilled: [],
+    gg: 'ggg'
 }
 const mutations = {
   // updateField,
   setRecentOrders(state, recentOrders){
     state.recentOrders = recentOrders
   },
-  ordersFullfilled(state, ordersFullfilled){
-    state.ordersFullfilled = ordersFullfilled
+  setOrdersFullfilled(state, ordersFullfilled){
+    state.ordersFullfilled = Array.from(ordersFullfilled)
   }
 }
 
 const getters = {
   // getField, 
+  sample: state => state.gg
 }
 
 const actions = {
@@ -44,7 +46,7 @@ const actions = {
     axios.get("http://127.0.0.1:8000/api/wmfullfilled",{ headers })
       .then(
       function (response){
-        commit('ordersFullfilled', response.data)
+        commit('setOrdersFullfilled', response.data)
       });
   }
 }

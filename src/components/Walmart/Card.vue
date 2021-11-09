@@ -1,7 +1,18 @@
 <template>
     <div class="flex justify ...">
-        <div w-24>
-            <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+        <div :style="{ 'background-color': newOrdersColor}">
+            <div class="flex items-center px-5 py-6 shadow-sm rounded-md ">
+                <div class="p-3 rounded-full bg-green-600 bg-opacity-75">              
+                </div>
+                <div class="mx-5">
+                    <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
+                    <div class="text-gray-500">New Orders (Week)</div>
+                    <div class="text-green-600 text-sm"><router-link to="/wm-dashboard">View Orders</router-link></div>
+                </div>
+            </div>
+        </div>
+        <div :style="{ 'background-color': fullfilledOrdersColor}">
+            <div class="flex items-center px-5 py-6 shadow-sm rounded-md">
                 <div class="p-3 rounded-full bg-yellow-600 bg-opacity-75">              
                 </div>
                 <div class="mx-5">
@@ -11,17 +22,7 @@
                 </div>
             </div>
         </div>
-         <div>
-            <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
-                <div class="p-3 rounded-full bg-green-600 bg-opacity-75">              
-                </div>
-                <div class="mx-5">
-                    <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
-                    <div class="text-gray-500">New Orders (Week)</div>
-                    <div class="text-green-600 text-sm"><router-link to="/">View Orders</router-link></div>
-                </div>
-            </div>
-        </div>
+        
         <div>
             <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                 <div class="p-3 rounded-full bg-gray-600 bg-opacity-75">              
@@ -46,3 +47,21 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props: ['newOrders', 'fullfilledOrders'],
+    computed: {
+      newOrdersColor() {
+        if(this.$props.newOrders){
+            return "#dee0e3"
+        }
+      },
+      fullfilledOrdersColor(){
+        if(this.$props.fullfilledOrders){
+            return "#dee0e3"
+        }
+    }
+    }
+}
+</script>

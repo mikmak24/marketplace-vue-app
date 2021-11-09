@@ -5,21 +5,11 @@
     </aside>
     <section class="w-full">
       <Navbar />
-      <div class="flex justiyfy">
-        <div class="w-1/2 md:w-50 flex items-center px-5 py-6 shadow-sm rounded-md">
-           <div class="flex items-center shadow-sm rounded-md bg-white">
-                <div class="p-3 rounded-full bg-yellow-600 bg-opacity-75">              
-                </div>
-                <div class="mx-5">
-                    <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
-                    <div class="text-gray-500">Orders Fullfiled</div>
-                </div>
-            </div>
-        </div>
-      </div>
+       <Card
+        :fullfilledOrders = "fullfilledOrders"
+         />
       <Table 
         :recentOrders="recentOrders"
-        :tableRows="tableRows"
        />
     </section>
   </main>
@@ -38,6 +28,8 @@ export default {
     return{
       pageName: 'Walmart Dashboard',
       recentOrders: [],
+      fullfilledOrders: true
+
     }
   },
   components: {
@@ -47,8 +39,17 @@ export default {
     Table
   },
   created(){
-    this.$store.dispatch('ordersFullfilled').wmdashboard 
-    this.recentOrders = this.$store.state.wmdashboard.ordersFullfilled
+    const usertoken = 'Bearer ' + localStorage.getItem('userToken')
+    const headers = {
+      "Accept": "application/json",
+      "Authorization": usertoken
+    };
+    const self = this;
+    const res = axios.get("http://127.0.0.1:8000/api/wmfullfilled",{ headers })
+      .then(
+        function (response){
+        self.recentOrders = response.data
+      });
   }
 }
 </script>
