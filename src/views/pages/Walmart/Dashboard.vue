@@ -24,7 +24,6 @@ export default {
   name: 'Dashboard',
   data(){
     return{
-      pageName: 'Walmart Dashboard',
       recentOrders: []
     }
   },
@@ -35,17 +34,8 @@ export default {
     Table
   },
   created(){
-    const usertoken = 'Bearer ' + localStorage.getItem('userToken')
-    const headers = { 
-      "Accept": "application/json",
-      "Authorization": usertoken
-    };
-    const self = this;
-    const res = axios.get("http://127.0.0.1:8000/api/wmitems",{ headers })
-      .then(
-        function (response){
-        self.recentOrders = response.data
-      });   
+    this.$store.dispatch('recentOrders').wmdashboard 
+    this.recentOrders = this.$store.state.wmdashboard.recentOrders
   }
 }
 </script>

@@ -40,8 +40,6 @@
 <script>
 import axios from 'axios';
 import AlertSuccess from '@/components/Walmart/AlertSuccess'
-
-
 export default {
     data(){
         return {

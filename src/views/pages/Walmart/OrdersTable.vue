@@ -47,18 +47,8 @@ export default {
     Table
   },
   created(){
-    const usertoken = 'Bearer ' + localStorage.getItem('userToken')
-    const headers = {
-      "Accept": "application/json",
-      "Authorization": usertoken
-    };
-    const self = this;
-    const res = axios.get("http://127.0.0.1:8000/api/wmfullfilled",{ headers })
-      .then(
-        function (response){
-        self.recentOrders = response.data
-        console.log(response)
-      });
+    this.$store.dispatch('ordersFullfilled').wmdashboard 
+    this.recentOrders = this.$store.state.wmdashboard.ordersFullfilled
   }
 }
 </script>

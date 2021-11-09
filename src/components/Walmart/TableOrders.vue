@@ -61,7 +61,7 @@
                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div class="flex items-center">
                   <div class="flex-shrink-0 h-10 w-15">
-                    <button class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    <button @click="showModal(order.eclipse_id)" class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                       View
                     </button>
                   </div>
@@ -72,10 +72,18 @@
         </table>
       </div>
     </div>
+    <OrdersModal 
+      v-if="viewModal"
+      :showModal="showModal"
+      :eclipse_id="eclipse_id"
+    
+    />
   </div>
 </template>
 <script>
 import TableHead from '@/components/Walmart/Tablehead'
+import OrdersModal from '@/components/Walmart/OrdersModal'
+
 export default {
   data(){
     return {
@@ -87,12 +95,21 @@ export default {
         'Carrier Method',
         'Tracking Number',
         'Ship Date',
-      ]
+      ],
+      viewModal: false,
+      eclipse_id: ''
     }
   },
   props: ['recentOrders'],
   components: {
-    TableHead
+    TableHead,
+    OrdersModal
+  },
+  methods: {
+    showModal(eclipseId){
+      this.viewModal = !this.viewModal
+      this.eclipse_id = eclipseId
+    }
   }
 }
 </script>
