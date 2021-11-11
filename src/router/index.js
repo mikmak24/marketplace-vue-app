@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Home from '../views/pages/Home.vue'
-import WalmartDashboard from '../views/pages/Walmart/Dashboard.vue'
+import OrderManagement from '../views/pages/Walmart/OrderManagement.vue'
 import WalmartUploadItems from '../views/pages/Walmart/UploadItems.vue'
 import OrdersTable from '../views/pages/Walmart/OrdersTable.vue'
+import EclipseTable from '../views/pages/Walmart/EclipseTable.vue'
+
 
 
 
@@ -19,9 +21,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/wm-dashboard',
-    name: 'WalmartDashboard',
-    component: WalmartDashboard
+    path: '/wm-neworders',
+    name: 'OrderManagement',
+    component: OrderManagement
   },
   {
     path: '/wm-uploaditems',
@@ -32,6 +34,11 @@ const routes = [
     path: '/wm-orderstable',
     name: 'OrdersTable',
     component: OrdersTable
+  },
+  {
+    path: '/wm-eclipsetable',
+    name: 'EclipseTable',
+    component: EclipseTable
   }
 ]
 

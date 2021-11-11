@@ -7,7 +7,7 @@
                 <div class="mx-5">
                     <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
                     <div class="text-gray-500">New Orders (Week)</div>
-                    <div class="text-green-600 text-sm"><router-link to="/wm-dashboard">View Orders</router-link></div>
+                    <div class="text-green-600 text-sm"><router-link to="/wm-neworders">View Orders</router-link></div>
                 </div>
             </div>
         </div>
@@ -23,14 +23,14 @@
             </div>
         </div>
         
-        <div>
-            <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+        <div :style="{ 'background-color': eclipseOrdersColor}">
+            <div class="flex items-center px-5 py-6 shadow-sm rounded-md">
                 <div class="p-3 rounded-full bg-gray-600 bg-opacity-75">              
                 </div>
                 <div class="mx-5">
                     <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
                     <div class="text-gray-500">Orders w/out Eclipse ID</div>
-                    <div class="text-gray-700 text-sm"><router-link to="/">View Orders</router-link></div>
+                    <div class="text-gray-700 text-sm"><router-link to="/wm-eclipsetable">View Orders</router-link></div>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
 
 <script>
 export default {
-    props: ['newOrders', 'fullfilledOrders'],
+    props: ['newOrders', 'fullfilledOrders', 'eclipseOrders'],
     computed: {
       newOrdersColor() {
         if(this.$props.newOrders){
@@ -61,7 +61,12 @@ export default {
         if(this.$props.fullfilledOrders){
             return "#dee0e3"
         }
-    }
+      },
+      eclipseOrdersColor(){
+        if(this.$props.eclipseOrders){
+            return "#dee0e3"
+        }
+      }
     }
 }
 </script>

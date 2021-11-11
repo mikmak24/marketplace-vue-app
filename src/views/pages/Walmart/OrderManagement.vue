@@ -23,10 +23,8 @@ import Table from '@/components/Walmart/TableDashboard'
 import axios from 'axios';
 
 export default {
-  name: 'Dashboard',
   data(){
     return{
-      pageName: 'Walmart Dashboard',
       recentOrders: [],
       newOrders: true
     }
