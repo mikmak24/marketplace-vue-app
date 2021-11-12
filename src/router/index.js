@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Home from '../views/pages/Home.vue'
-import OrderManagement from '../views/pages/Walmart/OrderManagement.vue'
+
+//Walmart Routes
 import WalmartUploadItems from '../views/pages/Walmart/UploadItems.vue'
-import OrdersTable from '../views/pages/Walmart/OrdersTable.vue'
-import EclipseTable from '../views/pages/Walmart/EclipseTable.vue'
-import DueOrdersTable from '../views/pages/Walmart/DueOrdersTable.vue'
+import OrderManagement from '../views/pages/Walmart/OMNewOrders.vue'
+import WCompleteOrders from '../views/pages/Walmart/OMCompleteOrders.vue'
+import WPassDueOrders from '../views/pages/Walmart/OMPassOrders.vue'
 
 const routes = [
   {
@@ -29,19 +30,14 @@ const routes = [
     component: WalmartUploadItems
   },
   {
-    path: '/wm-orderstable',
-    name: 'OrdersTable',
-    component: OrdersTable
+    path: '/wm-completedorders',
+    name: 'WCompleteOrders',
+    component: WCompleteOrders
   },
   {
-    path: '/wm-eclipsetable',
-    name: 'EclipseTable',
-    component: EclipseTable
-  },
-  {
-    path: '/wm-dueorders',
-    name: 'DueOrdersTable',
-    component: DueOrdersTable
+    path: '/wm-passorderstable',
+    name: 'WPassDueOrders',
+    component: WPassDueOrders
   }
 ]
 

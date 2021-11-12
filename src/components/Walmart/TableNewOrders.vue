@@ -151,6 +151,11 @@
         </div>
       </div>
     </div>
+     <OrdersModal
+      v-if="viewModal"
+      :showModal="showModal"
+      :eclipse_id="eclipse_id"
+    />
   </div>
 </template>
 <script>
@@ -169,12 +174,21 @@ export default {
         'Grand Total Cost',
         'Eclipse ID',
         'Has Shipment'
-      ]
+      ],
+      viewModal: false,
+
     }
   },
   props: ['recentOrders'],
   components: {
-    TableHead
+    TableHead,
+    OrdersModal
+  },
+   methods: {
+    showModal(eclipseId){
+      this.viewModal = !this.viewModal
+      this.eclipse_id = eclipseId
+    }
   }
 }
 </script>

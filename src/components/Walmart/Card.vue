@@ -19,7 +19,7 @@
                 <div class="mx-5">
                     <h4 class="text-2xl font-semibold text-gray-700">{{$store.state.wmdashboard.completeOrdersCount}}</h4>
                     <div class="text-gray-500">Orders Fullfiled (Weekly)</div>
-                    <div class="text-yellow-600 text-sm"><router-link to="/wm-orderstable">View Orders</router-link></div>
+                    <div class="text-yellow-600 text-sm"><router-link to="/wm-completedorders">View Orders</router-link></div>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
                 <div class="mx-5">
                     <h4 class="text-2xl font-semibold text-gray-700">{{$store.state.wmdashboard.passDueOrdersCount}}</h4>
                     <div class="text-gray-500">Pass Due Orders</div>
-                    <div class="text-gray-700 text-sm"><router-link to="/wm-eclipsetable">View Orders</router-link></div>
+                    <div class="text-gray-700 text-sm"><router-link to="/wm-passorderstable">View Orders</router-link></div>
                 </div>
             </div>
         </div>
