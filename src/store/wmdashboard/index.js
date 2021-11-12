@@ -3,17 +3,22 @@ import router from '../../router';
 import { getField, updateField } from 'vuex-map-fields';
 
 const state = {
-    recentOrders: [],
-    ordersFullfilled: [],
-    gg: 'ggg'
+    newOrdersCount: 0,
+    completeOrdersCount: 0,
+    passDueOrdersCount: 0
+
 }
 const mutations = {
   // updateField,
-  setRecentOrders(state, recentOrders){
-    state.recentOrders = recentOrders
+  newOrdersCount(state, count){
+    state.newOrdersCount = count
   },
-  setOrdersFullfilled(state, ordersFullfilled){
-    state.ordersFullfilled = Array.from(ordersFullfilled)
+
+  completeOrdersCount(state, count){
+    state.completeOrdersCount = count
+  },
+  passDueOrdersCount(state, count){
+    state.passDueOrdersCount = count
   }
 }
 
@@ -24,30 +29,46 @@ const getters = {
 
 const actions = {
   //dispatch
-  recentOrders({commit}){
+  newOrdersCount({commit}){
     const usertoken = 'Bearer ' + localStorage.getItem('userToken')
     const headers = { 
       "Accept": "application/json",
       "Authorization": usertoken
     };
-    axios.get("http://127.0.0.1:8000/api/wmitems",{ headers })
+    const self = this;
+    const res = axios.get("http://127.0.0.1:8000/api/countnewOrders",{ headers })
       .then(
-        function (response){     
-        commit('setRecentOrders', response.data)
-      });  
+        function (response){
+          commit('newOrdersCount', response.data)
+      });   
   },
 
-  ordersFullfilled({commit}){
+  completeOrdersCount({commit}){
     const usertoken = 'Bearer ' + localStorage.getItem('userToken')
-    const headers = {
+    const headers = { 
       "Accept": "application/json",
       "Authorization": usertoken
     };
-    axios.get("http://127.0.0.1:8000/api/wmfullfilled",{ headers })
+    const self = this;
+    const res = axios.get("http://127.0.0.1:8000/api/countcompleteOrders",{ headers })
       .then(
-      function (response){
-        commit('setOrdersFullfilled', response.data)
-      });
+        function (response){
+          commit('completeOrdersCount', response.data)
+      });   
+  },
+
+  passDueOrdersCount({commit}){
+    const usertoken = 'Bearer ' + localStorage.getItem('userToken')
+    const headers = { 
+      "Accept": "application/json",
+      "Authorization": usertoken
+    };
+    const self = this;
+    const res = axios.get("http://127.0.0.1:8000/api/countdueOrders",{ headers })
+      .then(
+        function (response){
+          commit('passDueOrdersCount', response.data)
+      });   
   }
 }
 

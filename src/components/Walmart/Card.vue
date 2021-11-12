@@ -1,12 +1,13 @@
 <template>
+<div class="container mx-auto px-4 sm:px-8 mt-3">
     <div class="flex justify ...">
         <div :style="{ 'background-color': newOrdersColor}">
             <div class="flex items-center px-5 py-6 shadow-sm rounded-md ">
                 <div class="p-3 rounded-full bg-green-600 bg-opacity-75">              
                 </div>
                 <div class="mx-5">
-                    <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
-                    <div class="text-gray-500">New Orders (Week)</div>
+                    <h4 class="text-2xl font-semibold text-gray-700">{{$store.state.wmdashboard.newOrdersCount}}</h4>
+                    <div class="text-gray-500">New Orders (Weekly)</div>
                     <div class="text-green-600 text-sm"><router-link to="/wm-neworders">View Orders</router-link></div>
                 </div>
             </div>
@@ -16,8 +17,8 @@
                 <div class="p-3 rounded-full bg-yellow-600 bg-opacity-75">              
                 </div>
                 <div class="mx-5">
-                    <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
-                    <div class="text-gray-500">Orders Fullfiled</div>
+                    <h4 class="text-2xl font-semibold text-gray-700">{{$store.state.wmdashboard.completeOrdersCount}}</h4>
+                    <div class="text-gray-500">Orders Fullfiled (Weekly)</div>
                     <div class="text-yellow-600 text-sm"><router-link to="/wm-orderstable">View Orders</router-link></div>
                 </div>
             </div>
@@ -25,32 +26,27 @@
         
         <div :style="{ 'background-color': eclipseOrdersColor}">
             <div class="flex items-center px-5 py-6 shadow-sm rounded-md">
-                <div class="p-3 rounded-full bg-gray-600 bg-opacity-75">              
+                <div class="p-3 rounded-full bg-red-600 bg-opacity-75">              
                 </div>
                 <div class="mx-5">
-                    <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
-                    <div class="text-gray-500">Orders w/out Eclipse ID</div>
+                    <h4 class="text-2xl font-semibold text-gray-700">{{$store.state.wmdashboard.passDueOrdersCount}}</h4>
+                    <div class="text-gray-500">Pass Due Orders</div>
                     <div class="text-gray-700 text-sm"><router-link to="/wm-eclipsetable">View Orders</router-link></div>
                 </div>
             </div>
         </div>
-        <div>
-            <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
-                <div class="p-3 rounded-full bg-red-600 bg-opacity-75">              
-                </div>
-                <div class="mx-5">
-                    <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
-                    <div class="text-gray-500">Errors</div>
-                    <div class="text-red-600 text-sm"><router-link to="/">View Orders</router-link></div>
-                </div>
-            </div>
-        </div>
+    </div>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['newOrders', 'fullfilledOrders', 'eclipseOrders'],
+    props: ['newOrders', 'fullfilledOrders', 'eclipseOrders', 'dueOrders'],
+    created(){
+        this.$store.dispatch('newOrdersCount')
+        this.$store.dispatch('completeOrdersCount')
+        this.$store.dispatch('passDueOrdersCount')
+    },
     computed: {
       newOrdersColor() {
         if(this.$props.newOrders){
@@ -64,6 +60,11 @@ export default {
       },
       eclipseOrdersColor(){
         if(this.$props.eclipseOrders){
+            return "#dee0e3"
+        }
+      },
+      dueOrdersColor(){
+          if(this.$props.dueOrders){
             return "#dee0e3"
         }
       }

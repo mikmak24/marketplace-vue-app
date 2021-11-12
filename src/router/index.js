@@ -5,9 +5,7 @@ import OrderManagement from '../views/pages/Walmart/OrderManagement.vue'
 import WalmartUploadItems from '../views/pages/Walmart/UploadItems.vue'
 import OrdersTable from '../views/pages/Walmart/OrdersTable.vue'
 import EclipseTable from '../views/pages/Walmart/EclipseTable.vue'
-
-
-
+import DueOrdersTable from '../views/pages/Walmart/DueOrdersTable.vue'
 
 const routes = [
   {
@@ -39,6 +37,11 @@ const routes = [
     path: '/wm-eclipsetable',
     name: 'EclipseTable',
     component: EclipseTable
+  },
+  {
+    path: '/wm-dueorders',
+    name: 'DueOrdersTable',
+    component: DueOrdersTable
   }
 ]
 
