@@ -155,7 +155,7 @@
 </template>
 <script>
 import TableHead from '@/components/Walmart/Tablehead'
-import OrdersModal from '@/components/Walmart/ModalNewOrders'
+import OrdersModal from '@/components/Walmart/ModalCompleteOrders'
 
 export default {
   data(){

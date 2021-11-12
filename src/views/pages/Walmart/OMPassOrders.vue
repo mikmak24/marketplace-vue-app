@@ -19,7 +19,7 @@
 import Sidebar from '@/components/Sidebar'
 import Navbar from '@/components/Walmart/Navbar'
 import Card from '@/components/Walmart/Card'
-import Table from '@/components/Walmart/TableEclipse'
+import Table from '@/components/Walmart/TableDueOrders'
 import axios from 'axios';
 
 export default {

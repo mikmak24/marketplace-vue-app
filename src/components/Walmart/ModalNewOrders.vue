@@ -31,23 +31,104 @@
                 <div class="flex flex-wrap -mx-3 mb-6">
                   <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
                       for="grid-first-name"
                     >
-                      MSN
+                      OrderDate
                     </label>
                     <input
                       readonly
                       class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       id="grid-first-name"
                       type="text"
-                      :placeholder="orderInfo.msn"
+                      :placeholder="orderInfo.created_at"
                     />
                   </div>
                   <div class="w-full md:w-1/3 px-3">
                     <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
                       for="grid-last-name"
+                    >
+                      PurchaseOrderID
+                    </label>
+                    <input
+                      readonly
+                      class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-first-name"
+                      type="text"
+                      :placeholder="orderInfo.purchase_order_id"
+                    />
+                  </div>
+                  <div class="w-full md:w-1/3 px-3">
+                    <label
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      for="grid-last-name"
+                    >
+                      OrderID
+                    </label>
+                    <input
+                      readonly
+                      class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-first-name"
+                      type="text"
+                      :placeholder="orderInfo.order_id"
+                    />
+                  </div>
+                </div>
+                
+                <div class="flex flex-wrap -mx-3 mb-6">
+                  <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      for="grid-first-name"
+                    >
+                      Website
+                    </label>
+                    <input
+                      readonly
+                      class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-first-name"
+                      type="text"
+                      :placeholder="orderInfo.website"
+                    />
+                  </div>
+                  <div class="w-full md:w-1/3 px-3">
+                    <label
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      for="grid-last-name"
+                    >
+                      Customer Email
+                    </label>
+                    <input
+                      readonly
+                      class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-first-name"
+                      type="text"
+                      :placeholder="orderInfo.cust_email"
+                    />
+                  </div>
+                  <div class="w-full md:w-1/3 px-3">
+                    <label
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      for="grid-last-name"
+                    >
+                      Grand Total Cost
+                    </label>
+                    <input
+                      readonly
+                      class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-first-name"
+                      type="text"
+                      :placeholder="orderInfo.grand_total_cost"
+                    />
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap -mx-3 mb-6">
+                  <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      for="grid-first-name"
                     >
                       Eclipse ID
                     </label>
@@ -61,65 +142,80 @@
                   </div>
                   <div class="w-full md:w-1/3 px-3">
                     <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
                       for="grid-last-name"
                     >
-                      Shipping Expense
+                      Has Shipment
                     </label>
                     <input
                       readonly
                       class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       id="grid-first-name"
                       type="text"
-                      :placeholder="orderInfo.shipping_expense"
+                      :placeholder="orderInfo.has_shipment"
+                    />
+                  </div>
+                  <div class="w-full md:w-1/3 px-3">
+                    <label
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      for="grid-last-name"
+                    >
+                      In Eclipse
+                    </label>
+                    <input
+                      readonly
+                      class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      id="grid-first-name"
+                      type="text"
+                      :placeholder="orderInfo.in_eclipse"
                     />
                   </div>
                 </div>
-                
-                <div class="flex flex-wrap -mx-3 mb-6">
+
+                 <div class="flex flex-wrap -mx-3 mb-6">
                   <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
                       for="grid-first-name"
                     >
-                      Carrier Type
+                      Name
                     </label>
                     <input
                       readonly
                       class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       id="grid-first-name"
                       type="text"
-                      :placeholder="orderInfo.carrier_type"
+                      :placeholder="orderInfo.name"
                     />
                   </div>
                   <div class="w-full md:w-1/3 px-3">
                     <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
                       for="grid-last-name"
                     >
-                      Carrier Method
+                      Address
                     </label>
                     <input
                       readonly
                       class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       id="grid-first-name"
                       type="text"
-                      :placeholder="orderInfo.carrier_method"
+                      :placeholder="orderInfo.address1"
                     />
                   </div>
                   <div class="w-full md:w-1/3 px-3">
                     <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
                       for="grid-last-name"
                     >
-                      Tracking Number
+                      City
                     </label>
                     <input
                       readonly
                       class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       id="grid-first-name"
                       type="text"
-                      :placeholder="orderInfo.tracking_number"
+                      :placeholder="orderInfo.city"
                     />
                   </div>
                 </div>
@@ -127,50 +223,52 @@
                 <div class="flex flex-wrap -mx-3 mb-6">
                   <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
                       for="grid-first-name"
                     >
-                      Ship Date
+                      State
                     </label>
                     <input
                       readonly
                       class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       id="grid-first-name"
                       type="text"
-                      :placeholder="orderInfo.ship_date"
+                      :placeholder="orderInfo.state"
                     />
                   </div>
                   <div class="w-full md:w-1/3 px-3">
                     <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
                       for="grid-last-name"
                     >
-                      Ship Status
+                      ZIP
                     </label>
                     <input
                       readonly
                       class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       id="grid-first-name"
                       type="text"
-                      placeholder="Completed"
+                      :placeholder="orderInfo.zip"
                     />
                   </div>
                   <div class="w-full md:w-1/3 px-3">
                     <label
-                      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      class="block tracking-wide text-gray-700 text-xs font-bold mb-2"
                       for="grid-last-name"
                     >
-                      Product ID
+                      Country
                     </label>
                     <input
                       readonly
                       class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       id="grid-first-name"
                       type="text"
-                      :placeholder="orderInfo.product_id"
+                      :placeholder="orderInfo.country"
                     />
                   </div>
                 </div>
+
+
               </div>
             </div>
           </div>
@@ -208,7 +306,7 @@ export default {
             "eclipse_id": eclipseId
         };
         const self = this;
-        const res = axios.post("http://127.0.0.1:8000/api/wmgetorder", params, { headers })
+        const res = axios.post("http://127.0.0.1:8000/api/wmgetNewOrder", params, { headers })
         .then(
             function (response){
             self.orderInfo = response.data
