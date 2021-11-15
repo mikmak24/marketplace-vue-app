@@ -7,6 +7,7 @@ import WalmartUploadItems from '../views/pages/Walmart/UploadItems.vue'
 import OrderManagement from '../views/pages/Walmart/OMNewOrders.vue'
 import WCompleteOrders from '../views/pages/Walmart/OMCompleteOrders.vue'
 import WPassDueOrders from '../views/pages/Walmart/OMPassOrders.vue'
+import ItemsCollection from '../views/pages/Walmart/ItemsCollection.vue'
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/wm-passorderstable',
     name: 'WPassDueOrders',
     component: WPassDueOrders
+  },
+  {
+    path: '/wm-itemscollection',
+    name: 'ItemsCollection',
+    component: ItemsCollection
   }
 ]
 

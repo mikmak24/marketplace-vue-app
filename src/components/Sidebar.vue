@@ -65,10 +65,10 @@
                     </router-link>
                 </div><br>
                 <div>
-                    <router-link to="">
+                    <router-link to="/wm-itemscollection">
                         <span class="inline-flex justify-center items-center ml-4">
                         </span>
-                        <span class="ml-2 text-sm tracking-wide truncate">List Items to Walmart</span>
+                        <span class="ml-2 text-sm tracking-wide truncate">Items on Walmart Collection</span>
                     </router-link>
                 </div><br>
                 <div>
