@@ -7,6 +7,7 @@
         <Navbar />
         <Table 
           :products = "products"
+          :getSpecificSku = "getSpecificSku"
         />
     </section>
 </main>
@@ -23,6 +24,28 @@ export default {
     return{
       products: [],
       newOrders: true
+    }
+  },
+  methods:{
+    getSpecificSku(skus){
+        const sku = skus
+        const usertoken = 'Bearer ' + localStorage.getItem('userToken')
+        const headers = { 
+        "Accept": "application/json",
+        "Authorization": usertoken
+        };
+        const params = {
+            "sku": sku
+        };
+        const self = this;
+        const res = axios.post("http://127.0.0.1:8000/api/wmsearchproduct", params, { headers })
+        .then(
+            function (response){
+        self.products = response.data
+        })  
+        .catch(function(){
+          console.log('Error!!');
+        });
     }
   },
   components: {

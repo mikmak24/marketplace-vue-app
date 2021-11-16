@@ -10,6 +10,7 @@
          />
       <Table 
         :recentOrders="recentOrders"
+        :getSpecificID = "getSpecificID"
        />
     </section>
   </main>
@@ -37,6 +38,27 @@ export default {
     Navbar,
     Card,
     Table
+  },
+  methods: {
+     getSpecificID(eclipse_id){
+        const usertoken = 'Bearer ' + localStorage.getItem('userToken')
+        const headers = { 
+        "Accept": "application/json",
+        "Authorization": usertoken
+        };
+        const params = {
+            "eclipseID": eclipse_id
+        };
+        const self = this;
+        const res = axios.post("http://127.0.0.1:8000/api/wmsearcheclipseid", params, { headers })
+        .then(
+            function (response){
+        self.recentOrders = response.data
+        })  
+        .catch(function(){
+          console.log('Error!!');
+        });
+    }
   },
   created(){
     const usertoken = 'Bearer ' + localStorage.getItem('userToken')

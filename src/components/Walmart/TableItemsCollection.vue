@@ -1,70 +1,23 @@
 <template>
-
   <div class="container mx-auto px-4 sm:px-8">
-    <AlertProductUpdated 
-        v-if="viewAlertProduct"
-    />
     <div class="py-8">
       <div class="my-2 flex sm:flex-row flex-col">
-        <div class="flex flex-row mb-1 sm:mb-0">
-          <div class="relative">
-            <select
-              class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            >
-              <option>5</option>
-              <option>10</option>
-              <option>20</option>
-            </select>
-            <div
-              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-            >
-              <svg
-                class="fill-current h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                />
-              </svg>
-            </div>
-          </div>
-          <div class="relative">
-            <select
-              class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
-            >
-              <option>All</option>
-              <option>Active</option>
-              <option>Inactive</option>
-            </select>
-            <div
-              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-            >
-              <svg
-                class="fill-current h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                />
-              </svg>
-            </div>
+        <div class="flex items-center justify-center ">
+          <div class="flex border-2 border-gray-200 rounded">
+              <input v-model="searchSku" type="text" class="px-4 py-2 w-80" placeholder="Search...">
+              <button @click="getSpecificSku(searchSku)" class="px-4 text-white bg-green-600 border-l ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
+              <button @click="reload" class="px-4 text-white bg-blue-600 border-l">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </button>
           </div>
         </div>
-        <div class="block relative">
-          <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
-            <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
-              <path
-                d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
-              ></path>
-            </svg>
-          </span>
-          <input
-            placeholder="Search"
-            class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
-          />
-        </div>
+       
       </div>
       <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
         <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -163,14 +116,13 @@
       v-if="viewModal"
       :showModal="showModal"
       :sku="sku"
-      :showAlertProduct="showAlertProduct"
     />
   </div>
 </template>
 <script>
 import TableHead from '@/components/Walmart/Tablehead'
 import ItemsCollectionModal from '@/components/Walmart/ModalItemsCollection'
-import AlertProductUpdated from '@/components/Walmart/AlertProductUpdated'
+import axios from 'axios';
 
 export default {
   data(){
@@ -189,23 +141,36 @@ export default {
         ],
       viewModal: false,
       sku: '',
-      viewAlertProduct: false,
+      searchSku: ''
     }
   },
-  props: ['products'],
+  props: ['products', 'getSpecificSku'],
   components: {
     TableHead,
     ItemsCollectionModal,
-    AlertProductUpdated
   },
    methods: {
     showModal(sku){
       this.viewModal = !this.viewModal
-      this.sku = sku
+      this.sku = sku  
     },
-    showAlertProduct(){
-        this.viewAlertProduct = !this.viewAlertProduct
+    reload(){
+      window.location.reload();
     }
-  }
+  },
+  created(){
+    let urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.has('sku')){
+       this.showModal(urlParams.get('sku'))
+    }
+  },
+  // watch: {
+  //   '$data': {
+  //     handler: function(newValue) {
+  //       console.log(newValue.searchSku)
+  //     },
+  //     deep: true
+  //   }
+  // }
 }
 </script>

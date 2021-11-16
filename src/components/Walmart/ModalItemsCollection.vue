@@ -24,6 +24,11 @@
             <img class="object-contain h-10 w-full" src="../../assets/Walmart/walmart-icon.png">
         </div>
 
+        <AlertProductUpdated
+            v-if="viewAlertProduct"
+            :sku="sku"
+        />
+
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
           <div class="sm:flex sm:items-start">
             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
@@ -186,7 +191,7 @@
           <button
             @click="updateContent(productInfo.prod_sku)"
             type="button"
-            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-600 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white-500 sm:ml-3 sm:w-auto sm:text-sm"
+            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-500 text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white-500 sm:ml-3 sm:w-auto sm:text-sm"
           >
             Get Update
           </button>
@@ -197,11 +202,17 @@
 </template>
 <script>
 import axios from 'axios';
+import AlertProductUpdated from '@/components/Walmart/AlertProductUpdated'
+
 export default {
     data(){
         return{
-            productInfo: ''
+            productInfo: '',
+            viewAlertProduct: false
         }
+    },
+    components: {
+        AlertProductUpdated
     },
     props: ['showModal', 'sku', 'showAlertProduct'],
     methods: {
@@ -219,8 +230,8 @@ export default {
             .then(
                 function (response){
                 console.log('Updating...')
-                self.showAlertProduct()
-                self.showModal()
+                self.viewAlertProduct = true
+                // self.showModal()
                 //console.log(self.showAlertProduct)
             })  
                 .catch(function(){
@@ -247,6 +258,8 @@ export default {
         .catch(function(){
           console.log('Error!!');
         });
+
+
     }
 }
 </script>
