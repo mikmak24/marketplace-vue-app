@@ -1,5 +1,8 @@
 <template>
   <main class="flex w-full h-screen">
+    <LoadingSpinner 
+      v-if="showSpinner"
+    /> 
     <aside class="w-60 ml-10 h-screen shadow-md w-fulll hidden sm:block">
       <Sidebar />
     </aside>
@@ -21,6 +24,7 @@ import Sidebar from '@/components/Sidebar'
 import Navbar from '@/components/Walmart/Navbar'
 import Card from '@/components/Walmart/Card'
 import Table from '@/components/Walmart/TableCompleteOrders'
+import LoadingSpinner from '@/components/LoadingSpinner'
 import axios from 'axios';
 
 export default {
@@ -29,15 +33,16 @@ export default {
     return{
       pageName: 'Walmart Dashboard',
       recentOrders: [],
-      fullfilledOrders: true
-
+      fullfilledOrders: true,
+      showSpinner: true
     }
   },
   components: {
     Sidebar,
     Navbar,
     Card,
-    Table
+    Table,
+    LoadingSpinner
   },
   methods: {
      getSpecificID(eclipse_id){
@@ -71,6 +76,7 @@ export default {
       .then(
         function (response){
         self.recentOrders = response.data
+        self.showSpinner = false
       });
   }
 }

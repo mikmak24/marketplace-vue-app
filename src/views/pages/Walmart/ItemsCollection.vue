@@ -1,5 +1,8 @@
 <template>
 <main class="flex w-full h-screen">
+    <LoadingSpinner 
+      v-if="showSpinner"
+    /> 
     <aside class="w-60 ml-10 h-screen bg-gray shadow-md w-fulll hidden sm:block">
         <Sidebar />
     </aside>
@@ -17,13 +20,15 @@
 import Sidebar from '@/components/Sidebar'
 import Navbar from '@/components/Walmart/Navbar'
 import Table from '@/components/Walmart/TableItemsCollection'
+import LoadingSpinner from '@/components/LoadingSpinner'
 import axios from 'axios';
 
 export default {
   data(){
     return{
       products: [],
-      newOrders: true
+      newOrders: true,
+      showSpinner: true
     }
   },
   methods:{
@@ -51,7 +56,8 @@ export default {
   components: {
     Sidebar,
     Navbar,
-    Table
+    Table,
+    LoadingSpinner
   },
   created(){
     const usertoken = 'Bearer ' + localStorage.getItem('userToken')
@@ -64,6 +70,7 @@ export default {
       .then(
         function (response){
         self.products = response.data
+        self.showSpinner = false
       });   
   }
 }

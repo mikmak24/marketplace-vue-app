@@ -8,7 +8,8 @@ const state = {
     userToken: '',
     userName: '',
     hasError: false,
-    authorization: ''
+    authorization: '',
+    showSpinner: false
 }
 const mutations = {
   updateField,
@@ -26,6 +27,9 @@ const mutations = {
   },
   hasError(state, value){
     state.hasError = value
+  },
+  showSpinner(state, value){
+    state.showSpinner = value
   }
 }
 
@@ -37,6 +41,7 @@ const getters = {
 const actions = {
   //dispatch
   async login({ commit }){
+    commit('showSpinner', true)
     console.log('Processsing Login Here')
     const credentials = { 
       email: state.email, 
@@ -63,6 +68,7 @@ const actions = {
   logout({commit }){
     localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
+    commit('showSpinner', false)
     commit('hasError', false)
     router.push('/')
   }

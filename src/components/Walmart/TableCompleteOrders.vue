@@ -24,16 +24,8 @@
             <TableHead :tableRows="tableRows" />
             <tbody v-for="order in recentOrders" :key="order._id">
               <tr>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <span
-                    class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                  >
-                    <span
-                      aria-hidden
-                      class="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                    ></span>
-                    <span class="relative">{{order.created_at}}</span>
-                  </span>
+                <td>
+                  {{order.created_at}}
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   {{order.msn}}
@@ -42,15 +34,7 @@
                   {{order.eclipse_id}}
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <span
-                    class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                  >
-                    <span
-                      aria-hidden
-                      class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                    ></span>
-                    <span class="relative">{{order.shipping_expense}} </span>
-                  </span>
+                  {{order.shipping_expense}} 
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <div class="flex items-center">
@@ -67,13 +51,19 @@
                     {{order.tracking_number}}
                   </div>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <div class="flex items-center">
+                <td>
+                  <div class="inline-flex">
                     <button
-                      @click="showModal(order.eclipse_id)"
-                      class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                      @click="showOrderDetails(order.eclipse_id)"
+                      class="h-7 px-4 m-2 text-sm text-black transition-colors duration-150 border border-green-700 rounded-lg focus:shadow-outline hover:bg-white"
                     >
-                      View
+                      SDOrder
+                    </button>
+                    <button
+                      @click="showShipmentDetails(order.eclipse_id)"
+                      class="h-7 px-4 m-2 text-sm text-black transition-colors duration-150 border border-blue-700 rounded-lg focus:shadow-outline hover:bg-white"
+                    >
+                      SDShipment
                     </button>
                   </div>
                 </td>
@@ -102,16 +92,23 @@
         </div>
       </div>
     </div>
-    <OrdersModal
-      v-if="viewModal"
-      :showModal="showModal"
+    <ModalOrderDetails
+      v-if="viewOrderDetails"
+      :showOrderDetails="showOrderDetails"
+      :eclipse_id="eclipse_id"
+    />
+    <ModalShipmentDetails
+      v-if="viewShipmentDetails"
+      :showShipmentDetails="showShipmentDetails"
       :eclipse_id="eclipse_id"
     />
   </div>
 </template>
 <script>
 import TableHead from '@/components/Walmart/Tablehead'
-import OrdersModal from '@/components/Walmart/ModalCompleteOrders'
+import ModalOrderDetails from '@/components/Walmart/ModalOrderDetails'
+import ModalWalmartDetails from '@/components/Walmart/ModalWalmartDetails'
+import ModalShipmentDetails from '@/components/Walmart/ModalShipmentDetails'
 
 export default {
   data(){
@@ -123,21 +120,38 @@ export default {
         'Shipping Expense',
         'Carrier Type',
         'Carrier Method',
-        'Tracking Number'
+        'Tracking Number',
+        'Details'
       ],
-      viewModal: false,
       eclipse_id: '',
-      searchEclipseID: ''
+      searchEclipseID: '',
+      viewDetails: false,
+      viewOrderDetails: false,
+      viewShipmentDetails: false,
     }
   },
   props: ['recentOrders', 'getSpecificID'],
   components: {
     TableHead,
-    OrdersModal
+    ModalOrderDetails,
+    ModalWalmartDetails,
+    ModalShipmentDetails
   },
   methods: {
     showModal(eclipseId){
       this.viewModal = !this.viewModal
+      this.eclipse_id = eclipseId
+    },
+    showOrderDetails(eclipseId) {
+      this.viewOrderDetails = !this.viewOrderDetails
+      this.eclipse_id = eclipseId
+    },
+    showWalmartDetails(orderId){
+      this.viewDetails = !this.viewDetails
+      this.order_id = orderId
+    },
+    showShipmentDetails(eclipseId){
+      this.viewShipmentDetails = !this.viewShipmentDetails
       this.eclipse_id = eclipseId
     },
     reload() {

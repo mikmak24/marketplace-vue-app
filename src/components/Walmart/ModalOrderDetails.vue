@@ -275,7 +275,7 @@
         </div>
         <div class="bg-blue-500 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
           <button
-            @click="showModal"
+            @click="showOrderDetails"
             type="button"
             class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
           >
@@ -294,7 +294,7 @@ export default {
             orderInfo: ''
         }
     },
-    props: ['showModal', 'eclipse_id'],
+    props: ['eclipse_id', 'showOrderDetails'],
     created(){
         const eclipseId = this.eclipse_id
         const usertoken = 'Bearer ' + localStorage.getItem('userToken')

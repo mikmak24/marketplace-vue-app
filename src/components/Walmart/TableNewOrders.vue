@@ -2,19 +2,52 @@
   <div class="container mx-auto px-4 sm:px-8">
     <div class="py-8">
       <div class="my-2 flex sm:flex-row flex-col">
-        <div class="flex items-center justify-center ">
+        <div class="flex items-center justify-center">
           <div class="flex border-2 border-gray-200 rounded">
-              <input v-model="searchOrderID" type="text" class="px-4 py-2 w-80" placeholder="Search Order ID...">
-              <button @click="getSpecificID(searchOrderID)" class="px-4 text-white bg-green-600 border-l ">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
-              <button @click="reload" class="px-4 text-white bg-blue-600 border-l">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-              </button>
+            <input
+              v-model="searchOrderID"
+              type="text"
+              class="px-4 py-2 w-80"
+              placeholder="Search Order ID..."
+            />
+            <button
+              @click="getSpecificID(searchOrderID)"
+              class="px-4 text-white bg-green-600 border-l"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
+            <button
+              @click="reload"
+              class="px-4 text-white bg-blue-600 border-l"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -25,15 +58,7 @@
             <tbody v-for="order in recentOrders" :key="order._id">
               <tr>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <span
-                    class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                  >
-                    <span
-                      aria-hidden
-                      class="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                    ></span>
-                    <span class="relative">{{order.created_at}}</span>
-                  </span>
+                  {{order.created_at}}
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   {{order.purchase_order_id}}
@@ -42,15 +67,7 @@
                   {{order.order_id}}
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <span
-                    class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-                  >
-                    <span
-                      aria-hidden
-                      class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                    ></span>
-                    <span class="relative">{{order.website}} </span>
-                  </span>
+                    {{order.website}}
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <div class="flex items-center">
@@ -72,25 +89,28 @@
                     {{order.has_shipment}}
                   </div>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <div class="flex items-center">
+                <td>
+                  <div class="inline-flex">
                     <button
-                      @click="showModal(order.eclipse_id)"
-                      class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full text-sm"
+                      @click="showOrderDetails(order.eclipse_id)"
+                      class="h-7 px-4 m-2 text-sm text-black transition-colors duration-150 border border-green-700 rounded-lg focus:shadow-outline hover:bg-white"
                     >
-                      Database
+                      SDOrder
                     </button>
-                  </div>
-                  <div class="flex items-center mt-1">
                     <button
-                      @click="showModal(order.eclipse_id)"
-                      class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full text-sm"
+                      @click="showShipmentDetails(order.eclipse_id)"
+                      class="h-7 px-4 m-2 text-sm text-black transition-colors duration-150 border border-blue-700 rounded-lg focus:shadow-outline hover:bg-white"
                     >
-                      Walmart
+                      SDShipment
+                    </button>
+                    <button
+                      @click="showWalmartDetails(order.order_id)"
+                      class="h-7 px-4 m-2 text-sm text-black transition-colors duration-150 border border-yellow-700 rounded-lg focus:shadow-outline hover:bg-white"
+                    >
+                      WalmartAPI
                     </button>
                   </div>
                 </td>
-                
               </tr>
             </tbody>
           </table>
@@ -116,16 +136,28 @@
         </div>
       </div>
     </div>
-     <OrdersModal
-      v-if="viewModal"
-      :showModal="showModal"
+    <ModalOrderDetails
+      v-if="viewOrderDetails"
+      :showOrderDetails="showOrderDetails"
+      :eclipse_id="eclipse_id"
+    />
+    <ModalWalmartDetails
+      v-if="viewDetails"
+      :showWalmartDetails="showWalmartDetails"
+      :order_id="order_id"
+    />
+    <ModalShipmentDetails
+      v-if="viewShipmentDetails"
+      :showShipmentDetails="showShipmentDetails"
       :eclipse_id="eclipse_id"
     />
   </div>
 </template>
 <script>
 import TableHead from '@/components/Walmart/Tablehead'
-import OrdersModal from '@/components/Walmart/ModalNewOrders'
+import ModalOrderDetails from '@/components/Walmart/ModalOrderDetails'
+import ModalWalmartDetails from '@/components/Walmart/ModalWalmartDetails'
+import ModalShipmentDetails from '@/components/Walmart/ModalShipmentDetails'
 
 export default {
   data(){
@@ -141,18 +173,32 @@ export default {
         'Has Shipment',
         'Details'
       ],
-      viewModal: false,
-      searchOrderID: ''
+      searchOrderID: '',
+      viewDetails: false,
+      viewOrderDetails: false,
+      viewShipmentDetails: false,
+      order_id: '',
+      eclipse_id: ''
     }
   },
   props: ['recentOrders', 'getSpecificID'],
   components: {
     TableHead,
-    OrdersModal
+    ModalOrderDetails,
+    ModalWalmartDetails,
+    ModalShipmentDetails
   },
    methods: {
-    showModal(eclipseId) {
-      this.viewModal = !this.viewModal
+    showOrderDetails(eclipseId) {
+      this.viewOrderDetails = !this.viewOrderDetails
+      this.eclipse_id = eclipseId
+    },
+    showWalmartDetails(orderId){
+      this.viewDetails = !this.viewDetails
+      this.order_id = orderId
+    },
+    showShipmentDetails(eclipseId){
+      this.viewShipmentDetails = !this.viewShipmentDetails
       this.eclipse_id = eclipseId
     },
     reload() {

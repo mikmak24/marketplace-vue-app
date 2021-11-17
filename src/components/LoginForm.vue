@@ -24,6 +24,10 @@
                     href="#">Forgot Password ?</a>
                 </div>
           </form>
+              <LoadingSpinner 
+                v-if="$store.state.auth.showSpinner"
+              /> 
+
         </div>
       </div>
     </div>
@@ -33,11 +37,18 @@
 <script>
 import { mapFields } from 'vuex-map-fields';
 import AlertBarError from '@/components/AlertBarError'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 export default {
   name: 'LoginForm',
+  data(){
+    return {
+      showSpinner: false
+    }
+  },
   components: {
     AlertBarError,
+    LoadingSpinner
   },
   methods: {
   },
