@@ -1,6 +1,6 @@
 <template>
 <!-- This example requires Tailwind CSS v2.0+ -->
-<nav class="bg-blue-700">
+<nav class="bg-gray-900">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-20">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -16,21 +16,15 @@
         </button>
       </div>
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex-shrink-0 flex items-center mt-2">
-            <img class="object-contain h-10 w-full" src="../../assets/Walmart/walmart-icon.png">
+        <div class="flex-shrink-0 flex items-center mt-4">
+            <img class="object-contain h-10 w-full" src="../../assets/Amazon/amazon-icon.png">
         </div>
         <div class="hidden sm:block sm:ml-6 mt-4">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="https://seller.walmart.com/" class="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
-                Seller Center
-            </a>
-            <a href="https://www.walmart.com/" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4">
-                Marketplace
-            </a>
-            <a href="https://developer.walmart.com/" class="block mt-4 lg:inline-block lg:mt-0 text-white">
-                Developer Portal
-            </a>
+            <a href="https://developer.amazon.com/en-US/alexa" class="block mt-4 lg:inline-block lg:mt-0 text-white mr-4" aria-current="page">Alexa</a>
+            <a href="https://developer.amazon.com/apps-and-games" class="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">Amazon App Store</a>
+            <a href="https://aws.amazon.com/" class="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">Aws</a>
           </div>
         </div>
       </div>
@@ -66,12 +60,11 @@
   <div class="sm:hidden" id="mobile-menu">
     <div class="px-2 pt-2 pb-3 space-y-1">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="#" class="text-white hover:bg-blue-500 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Seller Center</a>
+      <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Alexa</a>
 
-      <a href="#" class="text-gray-300 hover:bg-blue-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Marketplace</a>
+      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Amazon App Store</a>
 
-      <a href="#" class="text-gray-300 hover:bg-blue-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Developer Portal</a>
-
+      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Aws</a>
     </div>
   </div>
 </nav>

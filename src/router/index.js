@@ -9,6 +9,12 @@ import WCompleteOrders from '../views/pages/Walmart/OMCompleteOrders.vue'
 import WPassDueOrders from '../views/pages/Walmart/OMPassOrders.vue'
 import ItemsCollection from '../views/pages/Walmart/ItemsCollection.vue'
 
+//Amazon Routes
+import AMOrderManagement from '../views/pages/Amazon/OrderManagement.vue'
+
+//Ebay Routes
+import EBOrderManagement from '../views/pages/Ebay/OrderManagement.vue'
+
 const routes = [
   {
     path: '/',
@@ -44,7 +50,19 @@ const routes = [
     path: '/wm-itemscollection',
     name: 'ItemsCollection',
     component: ItemsCollection
-  }
+  },
+  //Amazon
+  {
+    path: '/am-ordermanagement',
+    name: 'AMOrderManagement',
+    component: AMOrderManagement
+  },
+  //
+  {
+    path: '/eb-ordermanagement',
+    name: 'EBOrderManagement',
+    component: EBOrderManagement
+  },
 ]
 
 const router = createRouter({
