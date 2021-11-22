@@ -77,13 +77,19 @@
                     {{product.prod_mart}}
                   </div>
                 </td>
-                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <div class="flex items-center">
+                <td>
+                  <div class="inline-flex">
                     <button
                       @click="showModal(product.prod_sku)"
-                      class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                      class="h-7 px-4 m-2 text-sm text-black transition-colors duration-150 border border-green-700 rounded-lg focus:shadow-outline hover:bg-white"
                     >
                       View
+                    </button>
+                    <button
+                      @click="showPromotionModal(product.prod_sku, product.prod_price)"
+                      class="h-7 px-4 m-2 text-sm text-black transition-colors duration-150 border border-blue-700 rounded-lg focus:shadow-outline hover:bg-white"
+                    >
+                      Promotion
                     </button>
                   </div>
                 </td>
@@ -112,16 +118,24 @@
         </div>
       </div>
     </div>
-     <ItemsCollectionModal
+    <ItemsCollectionModal
       v-if="viewModal"
       :showModal="showModal"
       :sku="sku"
+    />
+     <ItemPromotionModal
+      v-if="viewPromotionModal"
+      :showPromotionModal="showPromotionModal"
+      :sku="sku"
+      :currentPrice="currentPrice"
     />
   </div>
 </template>
 <script>
 import TableHead from '@/components/Walmart/Tablehead'
 import ItemsCollectionModal from '@/components/Walmart/ModalItemsCollection'
+import ItemPromotionModal from '@/components/Walmart/ModalItemPromotion'
+
 import axios from 'axios';
 
 export default {
@@ -141,13 +155,16 @@ export default {
         ],
       viewModal: false,
       sku: '',
-      searchSku: ''
+      searchSku: '',
+      viewPromotionModal: false,
+      currentPrice: ''
     }
   },
   props: ['products', 'getSpecificSku'],
   components: {
     TableHead,
     ItemsCollectionModal,
+    ItemPromotionModal
   },
    methods: {
     showModal(sku){
@@ -156,6 +173,11 @@ export default {
     },
     reload(){
       window.location.reload();
+    },
+    showPromotionModal(sku, price){
+      this.viewPromotionModal = !this.viewPromotionModal
+      this.sku = sku  
+      this.currentPrice = price  
     }
   },
   created(){

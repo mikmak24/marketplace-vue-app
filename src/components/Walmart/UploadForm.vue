@@ -1,6 +1,9 @@
 <template>
 <div id="app">
     <AlertSuccess v-if="success" />
+    <LoadingSpinner 
+      v-if="showSpinner"
+    /> 
   <div
     class="flex flex-col max-w-5xl h-52 bg-white rounded-lg md:flex-row my-10 mt-1"
     >
@@ -34,26 +37,33 @@
       </div>
     </div>
   </div>
+    {{showSpinner}}
+  <hr>
   {{productUploaded}}
   </div>
 </template>
 <script>
 import axios from 'axios';
 import AlertSuccess from '@/components/Walmart/AlertSuccess'
+import LoadingSpinner from '@/components/LoadingSpinner'
+
 export default {
     data(){
         return {
             productUploaded: [],
             file: '',
-            success: false
+            success: false,
+            showSpinner: false
         }
     },
     components: {
-        AlertSuccess
+        AlertSuccess,
+        LoadingSpinner,
     },
     methods: {
         submitFile(){
             const self = this;
+            self.showSpinner = !self.showSpinner
             const usertoken = 'Bearer ' + localStorage.getItem('userToken')
             let formData = new FormData();
             formData.append('file', this.file);
@@ -69,6 +79,7 @@ export default {
         function (response){
           self.productUploaded = response.data.data
           self.success = true
+          self.showSpinner = !self.showSpinner
         })
         .catch(function(){
           console.log('Error!!');
