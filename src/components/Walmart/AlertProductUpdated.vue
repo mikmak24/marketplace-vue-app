@@ -18,7 +18,7 @@
       <div>
         <p class="font-bold">Product has been successfully added</p>
         <p class="text-sm">
-          Page will refresh after 10 seconds: {{ timerCount }}
+          Page will refresh after 5 seconds: {{ timerCount }}
         </p>
       </div>
     </div>
@@ -30,7 +30,7 @@ export default {
     props: ['sku'],
     data() {
         return {
-            timerCount: 10
+            timerCount: 5
         }
     },
     watch: {

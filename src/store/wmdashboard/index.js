@@ -5,7 +5,8 @@ import { getField, updateField } from 'vuex-map-fields';
 const state = {
     newOrdersCount: 0,
     completeOrdersCount: 0,
-    passDueOrdersCount: 0
+    passDueOrdersCount: 0,
+    cancelOrdersCount: 0
 
 }
 const mutations = {
@@ -19,6 +20,9 @@ const mutations = {
   },
   passDueOrdersCount(state, count){
     state.passDueOrdersCount = count
+  },
+  cancelOrdersCount(state, count){
+    state.cancelOrdersCount = count
   }
 }
 
@@ -68,6 +72,20 @@ const actions = {
       .then(
         function (response){
           commit('passDueOrdersCount', response.data)
+      });   
+  },
+
+  cancelOrdersCount({commit}){
+    const usertoken = 'Bearer ' + localStorage.getItem('userToken')
+    const headers = { 
+      "Accept": "application/json",
+      "Authorization": usertoken
+    };
+    const self = this;
+    const res = axios.get("http://127.0.0.1:8000/api/countcancelOrders",{ headers })
+      .then(
+        function (response){
+          commit('cancelOrdersCount', response.data)
       });   
   }
 }

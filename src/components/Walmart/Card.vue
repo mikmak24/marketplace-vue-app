@@ -35,17 +35,31 @@
                 </div>
             </div>
         </div>
+
+        <div :style="{ 'background-color': cancelOrdersColor}">
+            <div class="flex items-center px-5 py-6 shadow-sm rounded-md">
+                <div class="p-3 rounded-full bg-black bg-opacity-75">              
+                </div>
+                <div class="mx-5">
+                    <h4 class="text-2xl font-semibold text-gray-700">{{$store.state.wmdashboard.cancelOrdersCount}}</h4>
+                    <div class="text-gray-500">Cancelled Orders</div>
+                    <div class="text-gray-700 text-sm"><router-link to="/wm-cancelorders">View Orders</router-link></div>
+                </div>
+            </div>
+        </div>
+
     </div>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['newOrders', 'fullfilledOrders', 'eclipseOrders', 'dueOrders'],
+    props: ['newOrders', 'fullfilledOrders', 'eclipseOrders', 'dueOrders', 'cancelOrders'],
     created(){
         this.$store.dispatch('newOrdersCount')
         this.$store.dispatch('completeOrdersCount')
         this.$store.dispatch('passDueOrdersCount')
+        this.$store.dispatch('cancelOrdersCount')
     },
     computed: {
       newOrdersColor() {
@@ -65,6 +79,11 @@ export default {
       },
       dueOrdersColor(){
           if(this.$props.dueOrders){
+            return "#dee0e3"
+        }
+      },
+      cancelOrdersColor(){
+          if(this.$props.cancelOrders){
             return "#dee0e3"
         }
       }

@@ -8,6 +8,8 @@ import OrderManagement from '../views/pages/Walmart/OMNewOrders.vue'
 import WCompleteOrders from '../views/pages/Walmart/OMCompleteOrders.vue'
 import WPassDueOrders from '../views/pages/Walmart/OMPassOrders.vue'
 import ItemsCollection from '../views/pages/Walmart/ItemsCollection.vue'
+import WCancelOrders from '../views/pages/Walmart/OMCancelOrders.vue'
+
 
 //Amazon Routes
 import AMOrderManagement from '../views/pages/Amazon/OrderManagement.vue'
@@ -50,6 +52,11 @@ const routes = [
     path: '/wm-itemscollection',
     name: 'ItemsCollection',
     component: ItemsCollection
+  },
+  {
+    path: '/wm-cancelorders',
+    name: 'WCancelOrders',
+    component: WCancelOrders
   },
   //Amazon
   {
