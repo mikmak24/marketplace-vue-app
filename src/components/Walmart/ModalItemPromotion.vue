@@ -72,12 +72,12 @@
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="first-name" class="block text-sm font-medium text-gray-700">New Currency</label>
+                            <label for="first-name" class="block text-sm font-medium text-gray-700">Start Date</label>
                             <input v-model="data.effectivedate" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="datetime-local">
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="last-name" class="block text-sm font-medium text-gray-700">New Price</label>
+                            <label for="last-name" class="block text-sm font-medium text-gray-700">End Date</label>
                             <input v-model="data.expirationdate" class="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="datetime-local">
                         </div>
 
@@ -97,7 +97,7 @@
         </div>
         <div class="bg-blue-500 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
           <button @click="$store.dispatch('wmpromotion/setpromotion', sku)" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-white text-base font-medium text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
-            Compare and Update
+            Save Promotion
           </button>
         </div>
       </div>
