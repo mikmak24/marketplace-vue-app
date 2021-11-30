@@ -15,7 +15,9 @@ const state = {
         effectivedate: '',
         expirationdate: '',
         procesmode: ''
-    }
+    },
+    response: '',
+    hasresponse: false
 
 }
 const mutations = {
@@ -24,6 +26,10 @@ const mutations = {
     },
     setOldPrice(state, value){
         state.oldprice = value
+    },
+    setResponse(state, value){
+        state.response = value
+        state.hasresponse = true
     }
  
 }
@@ -50,7 +56,8 @@ const actions = {
        .then(
         function (response){
             console.log(response.data)
-       //self.recentOrders = response.data
+            commit('setResponse', response.data)
+
        })  
        .catch(function(){
          console.log('Error!!');

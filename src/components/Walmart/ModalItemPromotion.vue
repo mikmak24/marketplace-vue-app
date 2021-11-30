@@ -9,7 +9,12 @@
           <img class="object-contain h-10 w-full" src="../../assets/Walmart/walmart-icon.png" />
         </div>
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <div class=" border-t border-b bg-green-100 border-green-700 text-black px-4 py-3" role="alert">
+            <div v-if="hasresponse" class="bg-green-100 border border-green-400 text-black px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline">{{response}}</span>
+            </div>
+
+
+            <div class=" border-t border-b text-black px-4 py-3" role="alert">
                 <p class="font-bold">Promotion Management</p>
                 <p class="text-xs">Sellers can set regular or promotional prices for their items. Setting the Promotional prices is an option to create unique pricing for events such as clearance sales or to call out a comparison price</p>
             </div>
@@ -117,7 +122,10 @@ export default {
     props: ['showPromotionModal', 'sku', 'currentPrice'],
     computed: {
         ...mapState({
-            data: state => state.wmpromotion.data
+            data: state => state.wmpromotion.data,
+            hasresponse: state => state.wmpromotion.hasresponse,
+            response: state => state.wmpromotion.response
+
         }) 
     },
     created() {
