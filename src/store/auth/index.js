@@ -3,8 +3,6 @@ import router from '../../router';
 import { getField, updateField } from 'vuex-map-fields';
 
 const state = {
-    email: '',
-    password: '',
     userToken: '',
     userName: '',
     hasError: false,
@@ -13,10 +11,6 @@ const state = {
 }
 const mutations = {
   updateField,
-  setEmail(state, email){
-    state.email = email
-    console.log(email)
-  },
   setuserToken(state, userToken){
     state.userToken = userToken
     localStorage.setItem("userToken", userToken)
@@ -40,15 +34,11 @@ const getters = {
 
 const actions = {
   //dispatch
-  async login({ commit }){
+  async login({commit}, payload){
     commit('showSpinner', true)
     console.log('Processsing Login Here')
-    const credentials = { 
-      email: state.email, 
-      password: state.password
-    };
-    
-    const res = axios.post("http://127.0.0.1:8000/api/login", credentials)
+   
+    const res = axios.post("http://127.0.0.1:8000/api/login", payload)
       .then(
         function (response){
           commit('setuserToken', response.data.data.token)
@@ -61,9 +51,6 @@ const actions = {
         }
       });  
     
-  },
-  setEmail({commit}, email){
-    commit('setEmail', email)
   },
   logout({commit }){
     localStorage.removeItem('userToken');

@@ -151,14 +151,14 @@
                       class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                       for="grid-last-name"
                     >
-                      Ship Status
+                      IsShipped
                     </label>
                     <input
                       readonly
                       class="appearance-none block w-full text-red-600 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       id="grid-first-name"
                       type="text"
-                      placeholder=""
+                      :placeholder="orderInfo.is_shipped"
                     />
                   </div>
                   <div class="w-full md:w-1/3 px-3">

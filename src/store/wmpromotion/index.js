@@ -36,12 +36,10 @@ const mutations = {
 
 const getters = {
   //getField,
-  
 }
 
 const actions = {
     setpromotion({commit}, sku){
-
        const usertoken = 'Bearer ' + localStorage.getItem('userToken')
        const headers = { 
        "Accept": "application/json",
